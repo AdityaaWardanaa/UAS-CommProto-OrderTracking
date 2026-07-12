@@ -10,129 +10,105 @@
   "item": [
     {
       "name": "Collection UAS COMP",
-      "item": [
-        {
-          "name": "Post data",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Successful POST request\", function () {",
-                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
-                  "});",
-                  ""
-                ]
-              }
+      "item": []
+    },
+    {
+      "name": "POST1 200OK",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"orderId\": \"INV-001\",\r\n\"customer\": \"Aditya Wardana\",\r\n\"items\": [\"Cetak Banner 3x4 Meter (2 pcs) - Laminasi Doff\"],\r\n\"amount\": 150000,\r\n\"channel\": \"offline\",\r\n\"status\": \"created\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
             }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
+          "protocol": "http",
+          "host": [
+            "localhost"
           ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "postman-echo.com/post",
-              "host": [
-                "postman-echo",
-                "com"
-              ],
-              "path": [
-                "post"
-              ]
-            },
-            "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
-          },
-          "response": []
-        },
-        {
-          "name": "500 internal server error",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"customerName\": \"Aditya Wardana\",\r\n    \"orderItem\": \"Cetak Banner 3x4 Meter\",\r\n    \"quantity\": 2,\r\n    \"status\": \"created\",\r\n    \"notes\": \"Laminasi doff, tolong diproses cepat\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "5678",
-              "path": [
-                "webhook-test",
-                "0aeb536f-196f-4061-aa84-331848aa7412"
-              ]
-            },
-            "description": "400 BAD REQUEST"
-          },
-          "response": []
-        },
-        {
-          "name": "GET webhook 200 ok",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "5678",
-              "path": [
-                "webhook-test",
-                "0aeb536f-196f-4061-aa84-331848aa7412"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "POST TASK ORDER",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"orderId\": \"INV-001\",\r\n  \"customer\": \"Aditya Wardana\",\r\n  \"items\": [\r\n    \"Cetak Banner 3x4 Meter (2 pcs) - Laminasi Doff\"\r\n  ],\r\n  \"amount\": 150000,\r\n  \"channel\": \"offline\",\r\n  \"status\": \"created\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "5678",
-              "path": [
-                "webhook-test",
-                "0aeb536f-196f-4061-aa84-331848aa7412"
-              ]
-            }
-          },
-          "response": []
+          "port": "5678",
+          "path": [
+            "webhook-test",
+            "0aeb536f-196f-4061-aa84-331848aa7412"
+          ]
         }
-      ]
+      },
+      "response": []
+    },
+    {
+      "name": "GET1 ALL ORDER 200OK",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5678",
+          "path": [
+            "webhook-test",
+            "0aeb536f-196f-4061-aa84-331848aa7412"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST2 INVALID JSON 400BADREQ",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"customerName\": \"Aditya Wardana\",\r\n  \"orderItem\": \"Cetak Stiker A3\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5678",
+          "path": [
+            "webhook-test",
+            "0aeb536f-196f-4061-aa84-331848aa7412"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET2 ORDER ID 9999 404 NOT FOUND",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5678/webhook-test/0aeb536f-196f-4061-aa84-331848aa7412",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5678",
+          "path": [
+            "webhook-test",
+            "0aeb536f-196f-4061-aa84-331848aa7412"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
