@@ -18,4 +18,4 @@ Lalu lintas data disadap dan dianalisis menggunakan **Wireshark** untuk membukti
 * `/docs`: Berisi Laporan Arsitektur (PDF) dan Slide Presentasi.
 
 ## Tautan Video Presentasi
-[Masukkan Link YouTube Unlisted Anda Di Sini]
+https://youtu.be/0NUGug2JsgE
